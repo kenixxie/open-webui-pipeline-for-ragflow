@@ -1,4 +1,4 @@
-'''
+"""
 title: RagFlow Pipeline
 author: open-webui
 date: 2025-10-30
@@ -125,9 +125,10 @@ class Pipeline:
                                         ext= last_part.lower() if last_part else ''
                                         referenceStr=referenceStr+f"\n\n - ["+chunk['document_name']+f"]({self.valves.HOST}:{self.valves.PORT}/document/{chunk['document_id']}?ext={ext}&prefix=document)"
                                         filesList.append(chunk['document_id'])
-                                #print(f"chunks is :{len(json_data['data']['reference']['chunks'] )}")
+                                #print(f"chunks is :{len(json_data['data']['reference']['chunks'])}")
                                 yield referenceStr
                     except json.JSONDecodeError:
                         print(f"Failed to parse JSON: {line}")
         else:
             yield f"Workflow request failed with status code: {question_response.status_code}"
+
